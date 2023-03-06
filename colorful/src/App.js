@@ -1,3 +1,4 @@
+// change all text color to  #DBC1C6
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
@@ -7,7 +8,9 @@ function ColorSection({ color, isFullScreen, header, text }) {
   const style = {
     backgroundColor: color,
     height: height,
-    padding: '20px'
+    padding: '20px',
+    borderTop: `5px solid ${color}`, // Add a colored border on top
+    color: '#BDC1C6' // Set text color to #DBC1C6
   };
 
   return (
@@ -70,13 +73,15 @@ function App() {
   return (
     <div onClick={handleClick}>
       {sections.map((section, index) => (
-        <ColorSection
-          key={index}
-          color={colorsState[index]}
-          isFullScreen={section.isFullScreen}
-          header={section.header}
-          text={section.text}
-        />
+        <div key={index}> {/* Wrap each section in a div */}
+          <div style={{ backgroundColor: colorsState[index], height: '20px' }}></div> {/* Add a colored bar on top */}
+          <ColorSection
+            color={"#202124"}
+            isFullScreen={section.isFullScreen}
+            header={section.header}
+            text={section.text}
+          />
+        </div>
       ))}
     </div>
   );
