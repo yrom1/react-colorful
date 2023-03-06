@@ -17,8 +17,8 @@ function ColorSection({ color, isFullScreen, header, text, image }) {
   return (
     <div style={style}>
       <h1>{header}</h1>
-      <p>{text}</p>
       {image && <img src={image} alt="" style={imgStyle} />}
+      <p>{text}</p>
     </div>
   );
 }
@@ -65,6 +65,11 @@ function App() {
       text: "This is the second section. It adjusts to the size of the text.",
       isFullScreen: false,
       image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg"
+    },
+    {
+      header: "Making stuff is fun",
+      text: "This is the third section. It adjusts to the size of the text.",
+      isFullScreen: false,
     },
     // Add more objects with different props here to add more sections
   ];
