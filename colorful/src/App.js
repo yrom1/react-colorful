@@ -3,19 +3,23 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
-function ColorSection({ color, isFullScreen, header, text }) {
+function ColorSection({ color, isFullScreen, header, text, image }) {
   const height = isFullScreen ? '100vh' : 'auto';
   const style = {
     backgroundColor: color,
     height: height,
     padding: '20px',
-    borderTop: `5px solid ${color}`, // Add a colored border on top
-    color: '#BDC1C6' // Set text color to #DBC1C6
+    borderRadius: `${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% / ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}%`
+  };
+  const imgStyle = {
+    maxWidth: '25%',
+    height: 'auto'
   };
 
   return (
     <div style={style}>
       <h1>{header}</h1>
+      {image && <img src={image} alt="" style={imgStyle} />}
       <p>{text}</p>
     </div>
   );
@@ -59,7 +63,13 @@ function App() {
     {
       header: "I'm sick af",
       text: "This is the second section. It adjusts to the size of the text.",
-      isFullScreen: false
+      isFullScreen: false,
+      image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg"
+    },
+    {
+      header: "Making stuff is fun",
+      text: "This is the third section. It adjusts to the size of the text.",
+      isFullScreen: false,
     },
     {
       header: "I like colors",
@@ -83,15 +93,14 @@ function App() {
   return (
     <div onClick={handleClick}>
       {sections.map((section, index) => (
-        <div key={index}> {/* Wrap each section in a div */}
-          <div style={{ backgroundColor: colorsState[index], height: '20px' }}></div> {/* Add a colored bar on top */}
-          <ColorSection
-            color={"#202124"}
-            isFullScreen={section.isFullScreen}
-            header={section.header}
-            text={section.text}
-          />
-        </div>
+        <ColorSection
+          key={index}
+          color={colorsState[index]}
+          isFullScreen={section.isFullScreen}
+          header={section.header}
+          text={section.text}
+          image={section.image}
+        />
       ))}
     </div>
   );
