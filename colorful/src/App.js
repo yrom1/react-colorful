@@ -18,6 +18,17 @@ function ColorSection({ color, isFullScreen, header, text }) {
   );
 }
 
+function generateRandomColors(sections, getRandomColor) {
+  const initialColors = [];
+  let lastColor = '';
+  for (let i = 0; i < sections.length; i++) {
+    let color = getRandomColor(lastColor);
+    lastColor = color;
+    initialColors.push(color);
+  }
+  return initialColors;
+}
+
 function App() {
   const colors = [
     '#DCB0CF', // orangy-pink
@@ -29,7 +40,7 @@ function App() {
   ];
 
   const getRandomColor = (lastColor) => {
-    let color = lastColor;
+    let color = colors[Math.floor(Math.random() * colors.length)];
     while (color === lastColor) {
       color = colors[Math.floor(Math.random() * colors.length)];
     }
@@ -50,28 +61,10 @@ function App() {
     // Add more objects with different props here to add more sections
   ];
 
-  const [colorsState, setColorsState] = useState(() => {
-    // Initialize the colors state array with random colors, ensuring no two adjacent colors are the same
-    const initialColors = [];
-    let lastColor = '';
-    for (let i = 0; i < sections.length; i++) {
-      let color = getRandomColor(lastColor);
-      lastColor = color;
-      initialColors.push(color);
-    }
-    return initialColors;
-  });
+  const [colorsState, setColorsState] = useState(() => generateRandomColors(sections, getRandomColor));
 
   const handleClick = () => {
-    // Set a new colors state array with random colors, ensuring no two adjacent colors are the same
-    const newColors = [];
-    let lastColor = '';
-    for (let i = 0; i < colorsState.length; i++) {
-      let color = getRandomColor(lastColor);
-      lastColor = color;
-      newColors.push(color);
-    }
-    setColorsState(newColors);
+    setColorsState(generateRandomColors(sections, getRandomColor));
   }
 
   return (
