@@ -7,7 +7,8 @@ function ColorSection({ color, isFullScreen, header, text, image }) {
   const style = {
     backgroundColor: color,
     height: height,
-    padding: '20px'
+    padding: '20px',
+    borderRadius: `${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% / ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}%`
   };
   const imgStyle = {
     maxWidth: '25%',
@@ -22,8 +23,6 @@ function ColorSection({ color, isFullScreen, header, text, image }) {
     </div>
   );
 }
-
-
 
 function generateRandomColors(sections, getRandomColor) {
   const initialColors = [];
