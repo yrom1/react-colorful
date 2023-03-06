@@ -2,21 +2,28 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
-function ColorSection({ color, isFullScreen, header, text }) {
+function ColorSection({ color, isFullScreen, header, text, image }) {
   const height = isFullScreen ? '100vh' : 'auto';
   const style = {
     backgroundColor: color,
     height: height,
     padding: '20px'
   };
+  const imgStyle = {
+    maxWidth: '25%',
+    height: 'auto'
+  };
 
   return (
     <div style={style}>
       <h1>{header}</h1>
       <p>{text}</p>
+      {image && <img src={image} alt="" style={imgStyle} />}
     </div>
   );
 }
+
+
 
 function generateRandomColors(sections, getRandomColor) {
   const initialColors = [];
@@ -56,7 +63,8 @@ function App() {
     {
       header: "I'm sick af",
       text: "This is the second section. It adjusts to the size of the text.",
-      isFullScreen: false
+      isFullScreen: false,
+      image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg"
     },
     // Add more objects with different props here to add more sections
   ];
@@ -76,6 +84,7 @@ function App() {
           isFullScreen={section.isFullScreen}
           header={section.header}
           text={section.text}
+          image={section.image}
         />
       ))}
     </div>
