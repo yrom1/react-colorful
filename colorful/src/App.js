@@ -3,8 +3,12 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-  const [color, setColor] = useState(0);
-
+  // #DCB0CF orangy-pink
+  // #9CF8EF light funky green
+  // #C773AD colar pink
+  // #E4D5FA pinkish white
+  // #90E8FA electric light greenblue
+  // #E7F9D0 light limey yellow
   const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -13,6 +17,8 @@ function App() {
     }
     return color;
   }
+
+  const [color, setColor] = useState(getRandomColor());
 
   const handleClick = () => {
     setColor(getRandomColor());
