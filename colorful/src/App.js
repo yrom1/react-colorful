@@ -61,6 +61,16 @@ function App() {
       text: "This is the second section. It adjusts to the size of the text.",
       isFullScreen: false
     },
+    {
+      header: "I like colors",
+      text: "This is the third section. It adjusts to the size of the text.",
+      isFullScreen: false
+    },
+    {
+      header: "And websites",
+      text: "This is the fourth section. It adjusts to the size of the text.",
+      isFullScreen: false
+    },
     // Add more objects with different props here to add more sections
   ];
 
