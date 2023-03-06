@@ -3,11 +3,7 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-  const [clickCount, setClickCount] = useState(0);
-
-  const handleClick = () => {
-    setClickCount(clickCount + 1);
-  }
+  const [color, setColor] = useState(0);
 
   const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
@@ -18,12 +14,16 @@ function App() {
     return color;
   }
 
+  const handleClick = () => {
+    setColor(getRandomColor());
+  }
+
   return (
     <div className="App" onClick={handleClick}>
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p style={{ textDecoration: 'underline', color: getRandomColor() }}>
-          {getRandomColor()}
+        <p style={{ textDecoration: 'underline', color: color }}>
+          {color}
         </p>
       </header>
     </div>
