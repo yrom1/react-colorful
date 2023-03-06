@@ -32,28 +32,24 @@ function App() {
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  const [color1, setColor1] = useState(getRandomColor());
-  const [color2, setColor2] = useState(getRandomColor());
-
   const sections = [
     {
-      color: color1,
-      isFullScreen: true,
       header: "Yo I'm Ryan",
-      text: "This is the first section. It takes up the whole height of the viewport."
+      text: "This is the first section. It takes up the whole height of the viewport.",
+      isFullScreen: true
     },
     {
-      color: color2,
-      isFullScreen: false,
       header: "I'm sick af",
-      text: "This is the second section. It adjusts to the size of the text."
-    }
+      text: "This is the second section. It adjusts to the size of the text.",
+      isFullScreen: false
+    },
     // Add more objects with different props here to add more sections
   ];
 
+  const [colorsState, setColorsState] = useState(sections.map(() => getRandomColor()));
+
   const handleClick = () => {
-    setColor1(getRandomColor());
-    setColor2(getRandomColor());
+    setColorsState(sections.map(() => getRandomColor()));
   }
 
   return (
@@ -61,7 +57,7 @@ function App() {
       {sections.map((section, index) => (
         <ColorSection
           key={index}
-          color={section.color}
+          color={colorsState[index]}
           isFullScreen={section.isFullScreen}
           header={section.header}
           text={section.text}
