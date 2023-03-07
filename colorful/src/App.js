@@ -1,4 +1,3 @@
-// change all text color to  #DBC1C6
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
@@ -25,10 +24,10 @@ function ColorSection({ color, isFullScreen, header, text, image }) {
   );
 }
 
-function generateRandomColors(sections, getRandomColor) {
+function generateRandomColors(len, getRandomColor) {
   const initialColors = [];
   let lastColor = '';
-  for (let i = 0; i < sections.length; i++) {
+  for (let i = 0; i < len; i++) {
     let color = getRandomColor(lastColor);
     lastColor = color;
     initialColors.push(color);
@@ -81,21 +80,30 @@ function App() {
       text: "This is the fourth section. It adjusts to the size of the text.",
       isFullScreen: false
     },
-    // Add more objects with different props here to add more sections
   ];
 
-  const [colorsState, setColorsState] = useState(() => generateRandomColors(sections, getRandomColor));
+  const numComponents = sections.length + 1; // headerbar
+  const [colorsState, setColorsState] = useState(() => generateRandomColors(numComponents, getRandomColor));
 
   const handleClick = () => {
-    setColorsState(generateRandomColors(sections, getRandomColor));
+    // horrible
+    setColorsState(generateRandomColors(numComponents, getRandomColor));
+  }
+
+  function HeaderBar({ color }) {
+    return (
+      <div style={{ backgroundColor: color, height: '50px' }}>
+      </div>
+    );
   }
 
   return (
     <div onClick={handleClick}>
+      <HeaderBar color={colorsState[0]} />
       {sections.map((section, index) => (
         <ColorSection
           key={index}
-          color={colorsState[index]}
+          color={colorsState[index + 1]} // skip the color of the header bar
           isFullScreen={section.isFullScreen}
           header={section.header}
           text={section.text}
