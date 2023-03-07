@@ -88,7 +88,7 @@ function App() {
 
   const handleScroll = debounce(() => {
     setColorsState(generateRandomColors(numComponents, getRandomColor));
-  }, 40);
+  }, 100);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
