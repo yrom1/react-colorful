@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function ColorSection({ color, isFullScreen, header, text, image }) {
   const height = isFullScreen ? '100vh' : 'auto';
@@ -84,6 +84,15 @@ function App() {
 
   const numComponents = sections.length + 1; // headerbar
   const [colorsState, setColorsState] = useState(() => generateRandomColors(numComponents, getRandomColor));
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScroll = () => {
+    setColorsState(generateRandomColors(numComponents, getRandomColor));
+  };
 
   const handleClick = () => {
     // horrible
