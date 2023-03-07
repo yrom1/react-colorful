@@ -92,7 +92,16 @@ function App() {
 
   function HeaderBar({ color }) {
     return (
-      <div style={{ backgroundColor: color, height: '50px' }}>
+      <div style={{ margin: '0', backgroundColor: color, fontSize: 'large', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px' }}>
+        <p></p>
+        <p></p>
+        <p>
+          <a href="https://www.github.com/yrom1" style={{ textDecoration: 'none' }}><b>github.com/yrom1/</b></a>
+        </p>
+        <p >
+          <b>Toronto</b>
+        </p>
+        <p></p>
       </div>
     );
   }
