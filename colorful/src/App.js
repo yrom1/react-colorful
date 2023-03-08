@@ -100,7 +100,7 @@ function App() {
     setColorsState(generateRandomColors(numComponents, getRandomColor));
   }
 
-  function HeaderBar({ color }) {
+  function HeaderBar({ color, content }) {
     return (
       <div style={{ margin: '0', backgroundColor: color, fontSize: 'large', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px' }}>
         <p></p>
@@ -116,14 +116,43 @@ function App() {
     );
   }
 
+  function Bar({ color, content }) {
+    return (
+      <div style={{ backgroundColor: color }}>
+        {content}
+      </div>
+    );
+  }
+
   useEffect(() => {
     console.log(colorsState)
     document.body.style.backgroundColor = colorsState[0];
   }, [colorsState]);
 
+  const bar_style = {
+    margin: '0', fontSize: 'large', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px'
+  }
+
+  const header_content = (
+    <div style={bar_style}>
+      <p></p>
+      <p></p>
+      <p>
+        <a href="https://www.github.com/yrom1" style={{ textDecoration: 'none' }}><b>github.com/yrom1/</b></a>
+      </p>
+      <p >
+        <b>Toronto</b>
+      </p>
+      <p></p>
+    </div>
+  );
+  const footer_content = (
+    <div style={bar_style}><p>hi</p></div>
+  )
+
   return (
     <div onClick={handleClick} style={{ backgroundColor: 'white' }}>
-      <HeaderBar color={colorsState[0]} />
+      <Bar color={colorsState[0]} content={header_content} />
       {sections.map((section, index) => (
         <ColorSection
           key={index}
@@ -134,6 +163,7 @@ function App() {
           image={section.image}
         />
       ))}
+      <Bar color={colorsState[0]} content={footer_content} />
     </div>
   );
 }
