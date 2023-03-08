@@ -116,8 +116,13 @@ function App() {
     );
   }
 
+  useEffect(() => {
+    console.log(colorsState)
+    document.body.style.backgroundColor = colorsState[0];
+  }, [colorsState]);
+
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} style={{ backgroundColor: 'white' }}>
       <HeaderBar color={colorsState[0]} />
       {sections.map((section, index) => (
         <ColorSection
