@@ -8,7 +8,6 @@ function ColorSection({ color, content }) {
     color: color,
     borderLeft: `2px solid ${color}`,
     padding: '20px',
-    textDecoration: 'underline',
   };
   return (
     <div style={style}>
@@ -63,23 +62,22 @@ function App() {
     margin: '0', fontSize: 'large', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px'
   }
   const sections = [
-    <>
-      <div>
-        <p></p>
-        <p></p>
-        <p style={text_style}>
-          <a style={{ textDecoration: 'none', color: text_color }} href="https://www.github.com/yrom1"><b>github.com/yrom1/</b></a>
-        </p>
-        <p style={text_style} >
-          <b>Toronto</b>
-        </p>
-        <p></p>
-      </div>
-    </>,
-    <div style={{ height: '50vh' }}>
+    <div>
       <h1>Yo I'm Ryan</h1>
+      <p></p>
+      <p></p>
+      <p >
+        <a style={{ color: 'inherit' }} href="https://www.github.com/yrom1"><b>github.com/yrom1</b></a>
+        {/* </p> */}
+        <> • </>
+        {/* <p style={text_style} > */}
+        <b>Toronto</b>
+      </p>
+      <p></p>
       <p>This is the first section. It takes up the whole height of the viewport.</p>
-    </div>,
+
+    </div>
+    ,
     <>
       <h2>I'm sick af</h2>
       <p>This is the second section. It adjusts to the size of the text.</p>
@@ -122,22 +120,6 @@ function App() {
   const handleClick = () => {
     // horrible
     setColorsState(generateRandomColors(numComponents, getRandomColor));
-  }
-
-  function HeaderBar({ color, content }) {
-    return (
-      <div style={{ margin: '0', backgroundColor: color, fontSize: 'large', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px' }}>
-        <p></p>
-        <p></p>
-        <p>
-          <a href="https://www.github.com/yrom1" style={{ textDecoration: 'none' }}><b>github.com/yrom1/</b></a>
-        </p>
-        <p >
-          <b>Toronto</b>
-        </p>
-        <p></p>
-      </div>
-    );
   }
 
   function Bar({ color, content }) {
