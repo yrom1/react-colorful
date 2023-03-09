@@ -55,8 +55,28 @@ function App() {
     return color;
   }
 
+  const text_color = '#D3D5D6';
+  const text_style = {
+    color: text_color
+  }
+  const bar_style = {
+    margin: '0', fontSize: 'large', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px'
+  }
   const sections = [
-    <div style={{ height: '100vh' }}>
+    <>
+      <div>
+        <p></p>
+        <p></p>
+        <p style={text_style}>
+          <a style={{ textDecoration: 'none', color: text_color }} href="https://www.github.com/yrom1"><b>github.com/yrom1/</b></a>
+        </p>
+        <p style={text_style} >
+          <b>Toronto</b>
+        </p>
+        <p></p>
+      </div>
+    </>,
+    <div style={{ height: '50vh' }}>
       <h1>Yo I'm Ryan</h1>
       <p>This is the first section. It takes up the whole height of the viewport.</p>
     </div>,
@@ -133,23 +153,8 @@ function App() {
     document.body.style.backgroundColor = colorsState[0];
   }, [colorsState]);
 
-  const bar_style = {
-    margin: '0', fontSize: 'large', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px'
-  }
 
-  const header_content = (
-    <div style={bar_style}>
-      <p></p>
-      <p></p>
-      <p>
-        <a href="https://www.github.com/yrom1" style={{ textDecoration: 'none' }}><b>github.com/yrom1/</b></a>
-      </p>
-      <p >
-        <b>Toronto</b>
-      </p>
-      <p></p>
-    </div>
-  );
+
   const footer_content = (
     <div style={bar_style}>
       <p></p>
@@ -159,6 +164,7 @@ function App() {
       <p></p>
     </div>
   )
+
   const foo = (
     <div>
       <p>Hewwo</p>
@@ -167,7 +173,7 @@ function App() {
 
   return (
     <div onClick={handleClick} style={{ backgroundColor: '#1F2225' }}>
-      <Bar color={colorsState[0]} content={header_content} />
+      <Bar color={colorsState[0]} content={<div style={{ height: '15px' }}></div>} />
       {/* <div style={{ paddingTop: '100vh' }}><p>Hi</p></div> */}
       {sections.map((_, index) => (
         <ColorSection
