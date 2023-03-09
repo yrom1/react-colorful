@@ -3,13 +3,13 @@ import './App.css';
 import { debounce } from 'lodash';
 import { useState, useEffect } from 'react';
 
-function ColorSection({ color, isFullScreen, header, text, image }) {
+function ColorSection({ color, isFullScreen, header, text, image, random }) {
   const height = isFullScreen ? '100vh' : 'auto';
   const style = {
     backgroundColor: color,
     height: height,
     padding: '20px',
-    borderRadius: `${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% / ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}%`
+    borderRadius: random ? `${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% / ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}%` : null
   };
   const imgStyle = {
     maxWidth: '25%',
@@ -177,6 +177,7 @@ function App() {
           header={section.header}
           text={section.text}
           image={section.image}
+          random={index === 0 ? true : false}
         />
       ))}
       <Bar color={colorsState[0]} content={footer_content} />
