@@ -157,7 +157,13 @@ function App() {
     </div>
   );
   const footer_content = (
-    <div style={bar_style}><p>hi</p></div>
+    <div style={bar_style}>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p><i>Thanks for visiting</i></p>
+      <p></p>
+    </div>
   )
 
   return (
