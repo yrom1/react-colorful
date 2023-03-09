@@ -9,7 +9,7 @@ function ColorSection({ color, isFullScreen, header, text, image }) {
     backgroundColor: color,
     height: height,
     padding: '20px',
-    // borderRadius: `${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% / ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}%`
+    borderRadius: `${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% / ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}% ${Math.random() * 100}%`
   };
   const imgStyle = {
     maxWidth: '25%',
@@ -29,18 +29,7 @@ function generateRandomColors(len, getRandomColor) {
   const initialColors = [];
   let lastColor = '';
   for (let i = 0; i < len; i++) {
-    let color;
-    if (i === 0) {
-      color = getRandomColor();
-    } else if (i === len - 1) {
-      do {
-        color = getRandomColor();
-      } while (color === initialColors[0]);
-    } else {
-      do {
-        color = getRandomColor(lastColor);
-      } while (color === initialColors[i - 1]);
-    }
+    let color = getRandomColor(lastColor);
     lastColor = color;
     initialColors.push(color);
   }
@@ -158,10 +147,7 @@ function App() {
     </div>
   );
   const footer_content = (
-    <div style={bar_style}>
-      <p>✨</p>
-      <p><b>Hi</b></p>
-    </div>
+    <div style={bar_style}><p>hi</p></div>
   )
 
   return (
