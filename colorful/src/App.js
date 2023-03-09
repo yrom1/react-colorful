@@ -26,14 +26,24 @@ function ColorSection({ color, isFullScreen, header, text, image }) {
 }
 
 function generateRandomColors(len, getRandomColor) {
-  const initialColors = [];
+  const colors = [];
   let lastColor = '';
   for (let i = 0; i < len; i++) {
     let color = getRandomColor(lastColor);
     lastColor = color;
-    initialColors.push(color);
+    colors.push(color);
   }
-  return initialColors;
+
+  if (colors.length > 1) {
+    // Keep getting a new color and making it the last element of the array
+    while (colors[0] === colors[colors.length - 1]) {
+      let color = getRandomColor(lastColor);
+      lastColor = color;
+      colors[colors.length - 1] = color;
+    }
+  }
+
+  return colors;
 }
 
 function App() {
