@@ -56,10 +56,10 @@ function App() {
   }
 
   const sections = [
-    <>
+    <div style={{ height: '100vh' }}>
       <h1>Yo I'm Ryan</h1>
       <p>This is the first section. It takes up the whole height of the viewport.</p>
-    </>,
+    </div>,
     <>
       <h2>I'm sick af</h2>
       <p>This is the second section. It adjusts to the size of the text.</p>
