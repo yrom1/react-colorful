@@ -62,7 +62,7 @@ function App() {
     margin: '0', fontSize: 'large', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px'
   }
   const sections = [
-    <div>
+    <div style={{ height: '100vh' }}>
       <h1>Yo I'm Ryan</h1>
       <p></p>
       <p></p>
